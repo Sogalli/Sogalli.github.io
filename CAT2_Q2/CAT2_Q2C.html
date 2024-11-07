@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net Pay Calculator</title>
+</head>
+<body>
+  <script>
+    function calculateNetPay() {
+      // Prompt for employee details
+      const name = prompt("Enter your name:");
+      const hoursWorked = parseFloat(prompt("Enter hours worked:"));
+      const ratePerHour = parseFloat(prompt("Enter rate per hour:"));
+
+      // Calculate gross pay
+      const grossPay = hoursWorked * ratePerHour;
+
+      // Determine the tax rate based on gross pay
+      let taxRate;
+      if (grossPay > 50000) {
+        taxRate = 0.2; // 20% tax
+      } else if (grossPay >= 20000 && grossPay <= 50000) {
+        taxRate = 0.1; // 10% tax
+      } else {
+        taxRate = 0.0; // 0% tax
+      }
+
+      // Calculate tax and net pay
+      const tax = grossPay * taxRate;
+      const netPay = grossPay - tax;
+
+      // Display results
+      alert(
+        `Employee Name: ${name}\n` +
+        `Gross Pay: $${grossPay.toFixed(2)}\n` +
+        `Tax: $${tax.toFixed(2)}\n` +
+        `Net Pay: $${netPay.toFixed(2)}`
+      );
+    }
+
+    // Run the function
+    calculateNetPay();
+  </script>
+</body>
+</html>

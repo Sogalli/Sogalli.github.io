@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Tax Calculator</title>
+</head>
+<body>
+  <script>
+    // Function to calculate salary, tax, and net income
+    function calculateTax() {
+      // Prompt the employee for their name, hours worked, and rate per hour
+      const name = prompt("Enter your name:");
+      const hoursWorked = parseFloat(prompt("Enter hours worked:"));
+      const ratePerHour = parseFloat(prompt("Enter your rate per hour:"));
+
+      // Calculate gross salary
+      const grossSalary = hoursWorked * ratePerHour;
+
+      // Determine tax rate based on gross salary
+      let taxRate;
+      if (grossSalary > 50000) {
+        taxRate = 0.2; // 20% tax
+      } else if (grossSalary >= 20000) {
+        taxRate = 0.1; // 10% tax
+      } else {
+        taxRate = 0.0; // 0% tax
+      }
+
+      // Calculate tax and net salary
+      const tax = grossSalary * taxRate;
+      const netSalary = grossSalary - tax;
+
+      // Display the results
+      alert(
+        `Employee Name: ${name}\n` +
+        `Gross Salary: $${grossSalary.toFixed(2)}\n` +
+        `Tax: $${tax.toFixed(2)}\n` +
+        `Net Salary: $${netSalary.toFixed(2)}`
+      );
+    }
+
+    // Call the function to execute the tax calculation
+    calculateTax();
+  </script>
+</body>
+</html>

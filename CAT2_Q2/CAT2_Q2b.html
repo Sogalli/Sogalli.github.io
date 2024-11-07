@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Pay and Tax Calculator</title>
+</head>
+<body>
+  <script>
+    function calculateBasicPay() {
+      // Prompt for employee details
+      const name = prompt("Enter your name:");
+      const hoursWorked = parseFloat(prompt("Enter hours worked:"));
+      const ratePerHour = parseFloat(prompt("Enter rate per hour:"));
+
+      // Calculate gross (basic) pay
+      const basicPay = hoursWorked * ratePerHour;
+
+      // Determine the applicable tax rate
+      let taxRate;
+      if (basicPay > 60000) {
+        taxRate = 0.2; // 20% tax
+      } else if (basicPay >= 20000) {
+        taxRate = 0.1; // 10% tax
+      } else {
+        taxRate = 0.0; // 0% tax
+      }
+
+      // Calculate tax and net pay
+      const tax = basicPay * taxRate;
+      const netPay = basicPay - tax;
+
+      // Display results
+      alert(
+        `Employee Name: ${name}\n` +
+        `Basic Pay (Gross Salary): $${basicPay.toFixed(2)}\n` +
+        `Tax: $${tax.toFixed(2)}\n` +
+        `Net Pay: $${netPay.toFixed(2)}`
+      );
+    }
+
+    // Run the function
+    calculateBasicPay();
+  </script>
+</body>
+</html>
